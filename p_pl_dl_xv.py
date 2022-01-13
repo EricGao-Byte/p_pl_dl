@@ -36,7 +36,7 @@ def run(sUrl, sCookieSource=None, nVideoLimit=None, bDebug=False):
             raise ConnectionError(f"403 Forbidden! Please check if cookies are required! Private videos/playlists cannot be accessed without cookies!")
 
     dYdlOptions = dict(dl_common.dYdlOptions)
-    dYdlOptions['download_archive'] = rf".\\sites\\{sExtractor}\\{dYdlOptions['download_archive'].format(sExtractor)}"
+    dYdlOptions['download_archive'] = rf"./sites/{sExtractor}/{dYdlOptions['download_archive'].format(sExtractor)}"
 
     print()
     for nIdx, sVideoUrl in enumerate(page.videos):
@@ -44,7 +44,7 @@ def run(sUrl, sCookieSource=None, nVideoLimit=None, bDebug=False):
             print(f"Processing playlist video {nIdx + 1} of {len(page.videos)} :: {sVideoUrl}")
             print()
 
-        dYdlOptions['outtmpl'] = rf'.\\sites\\{sExtractor}\\%(title).125s.%(ext)s'
+        dYdlOptions['outtmpl'] = rf'./sites/{sExtractor}/%(title).125s.%(ext)s'
 
         with youtube_dl.YoutubeDL(dYdlOptions) as ydl:
             ydl.download([sVideoUrl])

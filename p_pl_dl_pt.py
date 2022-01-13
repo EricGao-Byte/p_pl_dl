@@ -97,7 +97,7 @@ def run(sUrl, sCookieSource=None, nVideoLimit=None, bDebug=False):
         lUrlVideos = [sUrl]
 
     dYdlOptions = dict(dl_common.dYdlOptions)
-    dYdlOptions['download_archive'] = rf".\\sites\\{sExtractor}\\{dYdlOptions['download_archive'].format(sExtractor)}"
+    dYdlOptions['download_archive'] = rf"./sites/{sExtractor}/{dYdlOptions['download_archive'].format(sExtractor)}"
 
     for nIdx, sVideoUrl in enumerate(lUrlVideos):
         if sUrlType == 'playlist':
@@ -107,7 +107,7 @@ def run(sUrl, sCookieSource=None, nVideoLimit=None, bDebug=False):
         if bDebug:
             print(f"Processing {sVideoUrl}")
         video = Video(sVideoUrl)
-        dYdlOptions['outtmpl'] = rf'.\\sites\\{sExtractor}\\{video.sFullName}'
+        dYdlOptions['outtmpl'] = rf'./sites/{sExtractor}/{video.sFullName}'
 
         with youtube_dl.YoutubeDL(dYdlOptions) as ydl:
             ydl.download([video.downloadUrl])

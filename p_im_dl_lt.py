@@ -19,11 +19,11 @@ def run(sUrl, *args, **kwargs):
     lImageUrls = []
     for dImage in lGallery:
         sImageUrl = dImage['full']
-        sImageUrl = sImageUrl.replace("\\", "")
+        sImageUrl = sImageUrl.replace("/", "")
         lImageUrls += [sImageUrl]
     print(f"Found {len(lImageUrls)} images")
 
-    sArchive = rf".\\sites\\{sExtractor}\\dl_hist_{sExtractor}.txt"
+    sArchive = rf"./sites/{sExtractor}/dl_hist_{sExtractor}.txt"
 
     # Parse out album name, then check whether this album has already been downloaded
     sAlbumName = sUrl.split("/")[-2] if sUrl[-1] == '/' else sUrl.split("/")[-1]

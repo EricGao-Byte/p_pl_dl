@@ -34,7 +34,7 @@ def run(sUrl, sCookieSource=None, nVideoLimit=None, bDebug=False):
     page = Page_Pornhub(sUrl)
 
     dYdlOptions = dict(dl_common.dYdlOptions)
-    dYdlOptions['download_archive'] = rf".\\sites\\{sExtractor}\\{dYdlOptions['download_archive'].format(sExtractor)}"
+    dYdlOptions['download_archive'] = rf"./sites/{sExtractor}/{dYdlOptions['download_archive'].format(sExtractor)}"
 
     # Set options helpful for pornhub
     # dYdlOptions['retries']                      = 10
@@ -53,7 +53,7 @@ def run(sUrl, sCookieSource=None, nVideoLimit=None, bDebug=False):
             print()
 
             sVideoId = sVideoUrl.split('view_video.php?viewkey=')[-1]
-            dYdlOptions['outtmpl'] = rf'.\\sites\\{sExtractor}\\{sVideoId}_%(title).125s.mp4'
+            dYdlOptions['outtmpl'] = rf'./sites/{sExtractor}/{sVideoId}_%(title).125s.mp4'
 
             nStart = time()
             try:

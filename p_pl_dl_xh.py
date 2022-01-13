@@ -101,14 +101,14 @@ def run(sUrl, sCookieSource=None, nVideoLimit=None, bDebug=False):
         lUrlVideos = [sUrl]
 
     dYdlOptions = dict(dl_common.dYdlOptions)
-    dYdlOptions['download_archive'] = rf".\\sites\\{sExtractor}\\{dYdlOptions['download_archive'].format(sExtractor)}"
+    dYdlOptions['download_archive'] = rf"./sites/{sExtractor}/{dYdlOptions['download_archive'].format(sExtractor)}"
 
     for nIdx, sVideoUrl in enumerate(lUrlVideos):
         if sUrlType == 'playlist':
             print(f"Processing playlist video {nIdx + 1} of {nNumVideos} :: {sVideoUrl}")
             print()
 
-        dYdlOptions['outtmpl'] = rf'.\\sites\\{sExtractor}\\%(title)s.%(ext)s'
+        dYdlOptions['outtmpl'] = rf'./sites/{sExtractor}/%(title)s.%(ext)s'
 
         with youtube_dl.YoutubeDL(dYdlOptions) as ydl:
             ydl.download([sVideoUrl])

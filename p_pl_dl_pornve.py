@@ -9,7 +9,7 @@ import p_pl_dl_common as dl_common
 DEBUG = False
 
 sExtractor  = 'pornve'
-sArchive    = rf".\\sites\\{sExtractor}\\dl_hist_{sExtractor}.txt"
+sArchive    = rf"./sites/{sExtractor}/dl_hist_{sExtractor}.txt"
 
 
 def run(sUrl, sCookieSource=None, nVideoLimit=None, bDebug=False):
@@ -71,7 +71,7 @@ def run(sUrl, sCookieSource=None, nVideoLimit=None, bDebug=False):
             pass
 
         if bRun:
-            dYdlOptions['outtmpl'] = rf'.\\sites\\{sExtractor}\\{sVideoName}.%(ext)s'
+            dYdlOptions['outtmpl'] = rf'./sites/{sExtractor}/{sVideoName}.%(ext)s'
 
             with youtube_dl.YoutubeDL(dYdlOptions) as ydl:
                 ydl.cache.remove()

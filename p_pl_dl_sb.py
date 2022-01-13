@@ -42,7 +42,7 @@ def run(sUrl, sCookieSource=None, nVideoLimit=None, bDebug=False):
     sleepRandom(3, 5)
 
     dYdlOptions = dict(dl_common.dYdlOptions)
-    dYdlOptions['download_archive'] = rf".\\sites\\{sExtractor}\\{dYdlOptions['download_archive'].format(sExtractor)}"
+    dYdlOptions['download_archive'] = rf"./sites/{sExtractor}/{dYdlOptions['download_archive'].format(sExtractor)}"
     # dYdlOptions['referer']          = 'https://spankbang.com'
     # dYdlOptions['user_agent']       = dl_common.dHeaders['User-Agent']        # Not needed - YTDL already has a UA randomizer
 
@@ -51,7 +51,7 @@ def run(sUrl, sCookieSource=None, nVideoLimit=None, bDebug=False):
             print(f"Processing playlist video {nIdx + 1} of {page._nVideos} :: {sVideoUrl}")
             print()
 
-        dYdlOptions['outtmpl'] = rf'.\\sites\\{sExtractor}\\%(title).125s.%(ext)s'
+        dYdlOptions['outtmpl'] = rf'./sites/{sExtractor}/%(title).125s.%(ext)s'
 
         with youtube_dl.YoutubeDL(dYdlOptions) as ydl:
             ydl.cache.remove()
